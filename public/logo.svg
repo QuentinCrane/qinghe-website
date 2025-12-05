@@ -1,0 +1,12 @@
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="50" y1="0" x2="50" y2="100" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#8FD3F4"/>
+      <stop offset="100%" stop-color="#84FAB0"/>
+    </linearGradient>
+  </defs>
+  <rect width="100" height="100" rx="22" fill="url(#bgGradient)"/>
+  <path d="M50 25C50 25 35 45 35 60C35 75 50 85 50 85C50 85 65 75 65 60C65 45 50 25 50 25Z" fill="white"/>
+  <path d="M50 85C50 85 35 75 20 60C15 55 20 40 20 40C20 40 10 55 20 70C30 85 50 90 50 90" fill="white" fill-opacity="0.7"/>
+  <path d="M50 85C50 85 65 75 80 60C85 55 80 40 80 40C80 40 90 55 80 70C70 85 50 90 50 90" fill="white" fill-opacity="0.7"/>
+</svg>

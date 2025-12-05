@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { 
   Wallet, 
   PieChart, 
@@ -6,18 +6,14 @@ import {
   Download, 
   ShieldCheck, 
   Smartphone,
-  LayoutGrid,
-  ArrowRight,
   Check,
   CreditCard,
-  Calendar,
-  Plus,
   ArrowUpCircle,
   ArrowDownCircle,
-  Save,
   Monitor,
   Tablet,
-  Laptop
+  Laptop,
+  Mail
 } from 'lucide-react';
 
 export default function App() {
@@ -33,6 +29,9 @@ export default function App() {
       <FeatureAnimations />
       <FeatureCrossPlatform />
       <FeatureInterface />
+      <About />
+      <Privacy />
+      <Contact />
       <Footer />
     </div>
   );
@@ -44,7 +43,7 @@ function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           <div className="flex items-center space-x-3">
-            <img src="/logo.svg" alt="Logo" className="h-9 w-9" />
+            <img src="logo.svg" alt="Logo" className="h-9 w-9" />
             <span className="font-bold text-xl tracking-tight text-gray-900">青荷记账</span>
           </div>
           <div className="hidden md:flex space-x-10 text-sm font-medium text-gray-500">
@@ -53,7 +52,7 @@ function Navbar() {
             <a href="#analytics" className="hover:text-gray-900 transition-colors">分析</a>
             <a href="#platform" className="hover:text-gray-900 transition-colors">多端</a>
           </div>
-          <a href="YOUR_GITHUB_RELEASE_LINK_HERE" target="_blank" rel="noopener noreferrer" className="bg-gray-900 text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-gray-800 transition-all hover:scale-105 active:scale-95">
+          <a href="qinghe-budget-1.1.0-20251205.apk" target="_blank" rel="noopener noreferrer" className="bg-gray-900 text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-gray-800 transition-all hover:scale-105 active:scale-95">
             下载 App
           </a>
         </div>
@@ -64,26 +63,26 @@ function Navbar() {
 
 function Hero() {
   return (
-    <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white">
+    <section className="relative pt-24 sm:pt-32 pb-16 sm:pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h1 className="text-6xl md:text-8xl font-extrabold tracking-tight text-gray-900 mb-8 leading-tight">
+          <h1 className="text-4xl sm:text-6xl md:text-8xl font-extrabold tracking-tight text-gray-900 mb-8 leading-tight">
             记账，<br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-violet-600">从未如此优雅。</span>
           </h1>
-          <p className="mt-8 text-2xl md:text-3xl text-gray-500 max-w-3xl mx-auto font-light leading-relaxed">
+          <p className="mt-8 text-lg sm:text-2xl md:text-3xl text-gray-500 max-w-3xl mx-auto font-light leading-relaxed">
             青荷记账，你的私人财务管家。
           </p>
           <div className="mt-12 flex justify-center gap-6">
             <a 
-              href="YOUR_GITHUB_RELEASE_LINK_HERE" 
+              href="qinghe-budget-1.1.0-20251205.apk" 
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-blue-600 text-white px-10 py-4 rounded-full text-xl font-semibold hover:bg-blue-700 transition-all flex items-center gap-3 shadow-xl shadow-blue-500/30 hover:-translate-y-1"
+              className="bg-blue-600 text白 px-10 py-4 rounded-full text-xl font-semibold hover:bg-blue-700 transition-all flex items-center gap-3 shadow-xl shadow-blue-500/30 hover:-translate-y-1"
             >
               <Download className="w-6 h-6" /> 免费下载
             </a>
@@ -167,17 +166,17 @@ function Hero() {
 // 1. 预算计划：能够自定义每个月的预算，花钱更称心如意
 function FeatureBudget() {
   return (
-    <section id="budget" className="py-32 bg-gray-50">
+    <section id="budget" className="py-20 sm:py-32 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-2 gap-20 items-center">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-20 items-center">
           <div>
             <div className="inline-flex items-center justify-center p-4 bg-blue-100 rounded-3xl mb-10">
               <Wallet className="w-8 h-8 text-blue-600" />
             </div>
-            <h2 className="text-5xl md:text-7xl font-bold mb-8 text-gray-900 tracking-tight leading-tight">
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-8 text-gray-900 tracking-tight leading-tight">
               预算计划
             </h2>
-            <p className="text-3xl md:text-4xl text-gray-500 font-medium leading-relaxed mb-12">
+            <p className="text-xl sm:text-3xl md:text-4xl text-gray-500 font-medium leading-relaxed mb-10 sm:mb-12">
               能够自定义每个月的预算，<br/>
               <span className="text-blue-600">花钱更称心如意。</span>
             </p>
@@ -193,11 +192,11 @@ function FeatureBudget() {
             </ul>
           </div>
           <div className="relative group">
-            <div className="absolute -inset-4 bg-gradient-to-r from-blue-100 to-violet-100 rounded-[3rem] blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            <div className="absolute -inset-4 bg-gradient-to-r from-blue-100 to-violet-100 rounded-[3rem] blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 hidden sm:block" />
             <motion.div 
               whileInView={{ scale: [0.95, 1], opacity: [0, 1] }}
               transition={{ duration: 0.6 }}
-              className="bg-white rounded-[2.5rem] shadow-2xl p-10 aspect-[4/5] flex flex-col relative overflow-hidden border border-gray-100 z-10"
+              className="bg-white rounded-[2rem] sm:rounded-[2.5rem] shadow-2xl p-6 sm:p-10 aspect-[4/5] flex flex-col relative overflow-hidden border border-gray-100 z-10"
             >
                <div className="flex justify-between items-end mb-12">
                  <div>
@@ -242,17 +241,17 @@ function FeatureBudget() {
 // 2. 记账，简易快捷的记账，流畅的动效，顺心的体验
 function FeatureExpense() {
   return (
-    <section id="expense" className="py-32 bg-white overflow-hidden">
+    <section id="expense" className="py-20 sm:py-32 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-2 gap-20 items-center">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-20 items-center">
            <div className="order-2 md:order-1 flex justify-center">
               <div className="relative">
-                <div className="absolute -inset-10 bg-gradient-to-tr from-emerald-100 to-teal-50 rounded-full blur-3xl opacity-50" />
+                <div className="absolute -inset-10 bg-gradient-to-tr from-emerald-100 to-teal-50 rounded-full blur-3xl opacity-50 hidden sm:block" />
                 <motion.div 
                   initial={{ y: 40, opacity: 0 }}
                   whileInView={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.8 }}
-                  className="w-[340px] bg-white rounded-[3rem] border-[8px] border-gray-900 shadow-2xl overflow-hidden relative z-10 h-[680px] flex flex-col"
+                  className="max-w-[90vw] w-[320px] sm:w-[340px] bg-white rounded-[2.5rem] border-[6px] sm:rounded-[3rem] sm:border-[8px] border-gray-900 shadow-2xl overflow-hidden relative z-10 h-[640px] sm:h-[680px] flex flex-col"
                 >
                    {/* Status Bar */}
                    <div className="h-10 bg-white flex items-center justify-between px-6">
@@ -318,10 +317,10 @@ function FeatureExpense() {
               <div className="inline-flex items-center justify-center p-4 bg-emerald-100 rounded-3xl mb-10">
                 <CreditCard className="w-8 h-8 text-emerald-600" />
               </div>
-              <h2 className="text-5xl md:text-7xl font-bold mb-8 text-gray-900 tracking-tight">
+              <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 sm:mb-8 text-gray-900 tracking-tight">
                 记账
               </h2>
-              <p className="text-3xl md:text-4xl text-gray-500 font-medium leading-relaxed mb-10">
+              <p className="text-xl sm:text-3xl md:text-4xl text-gray-500 font-medium leading-relaxed mb-8 sm:mb-10">
                 <span className="text-emerald-600">简易快捷的记账，</span><br/>
                 流畅的动效，顺心的体验。
               </p>
@@ -339,22 +338,22 @@ function FeatureExpense() {
 // 3. 数据可视化，每一条数据都是有可视化，让冷冰冰的数字不再陌生
 function FeatureAnalytics() {
   return (
-    <section id="analytics" className="py-32 bg-gray-50">
+    <section id="analytics" className="py-20 sm:py-32 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-         <div className="text-center max-w-4xl mx-auto mb-20">
+         <div className="text-center max-w-4xl mx-auto mb-12 sm:mb-20">
             <div className="inline-flex items-center justify-center p-4 bg-orange-100 rounded-3xl mb-10">
               <PieChart className="w-8 h-8 text-orange-600" />
             </div>
-            <h2 className="text-5xl md:text-7xl font-bold mb-8 text-gray-900 tracking-tight">
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 sm:mb-8 text-gray-900 tracking-tight">
               数据可视化
             </h2>
-            <p className="text-3xl md:text-4xl text-gray-500 font-medium leading-relaxed">
+            <p className="text-xl sm:text-3xl md:text-4xl text-gray-500 font-medium leading-relaxed">
               每一条数据都是有可视化，<br/>
               <span className="text-orange-600">让冷冰冰的数字不再陌生。</span>
             </p>
          </div>
 
-         <div className="grid md:grid-cols-3 gap-10">
+         <div className="grid md:grid-cols-3 gap-6 md:gap-10">
             {[
               { title: '支出构成', icon: '📊', desc: '清晰的饼图展示，一目了然的类别占比', color: 'bg-blue-50', text: 'text-blue-600' },
               { title: '趋势分析', icon: '📈', desc: '智能折线图，洞察每月消费变化趋势', color: 'bg-green-50', text: 'text-green-600' },
@@ -363,9 +362,9 @@ function FeatureAnalytics() {
               <motion.div 
                 key={i}
                 whileHover={{ y: -10 }}
-                className="bg-white p-12 rounded-[3rem] shadow-sm hover:shadow-2xl transition-all border border-gray-100 group"
+                className="bg-white p-6 sm:p-12 rounded-[2rem] sm:rounded-[3rem] shadow-sm hover:shadow-2xl transition-all border border-gray-100 group"
               >
-                <div className={`w-24 h-24 ${item.color} rounded-3xl flex items-center justify-center text-5xl mb-8 group-hover:scale-110 transition-transform`}>
+                <div className={`w-16 h-16 sm:w-24 sm:h-24 ${item.color} rounded-3xl flex items-center justify-center text-3xl sm:text-5xl mb-6 sm:mb-8 group-hover:scale-110 transition-transform`}>
                   {item.icon}
                 </div>
                 <h3 className="text-3xl font-bold mb-4 text-gray-900">{item.title}</h3>
@@ -381,17 +380,17 @@ function FeatureAnalytics() {
 // 4. 全面支持导出和导入用户数据，不被会员所限制，导出的json数据，方便ai处理
 function FeatureData() {
   return (
-    <section id="data" className="py-32 bg-white">
+    <section id="data" className="py-20 sm:py-32 bg白">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-2 gap-20 items-center">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-20 items-center">
           <div>
             <div className="inline-flex items-center justify-center p-4 bg-indigo-100 rounded-3xl mb-10">
               <ShieldCheck className="w-8 h-8 text-indigo-600" />
             </div>
-            <h2 className="text-5xl md:text-7xl font-bold mb-8 text-gray-900 tracking-tight leading-tight">
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 sm:mb-8 text-gray-900 tracking-tight leading-tight">
               数据自由
             </h2>
-            <p className="text-3xl md:text-4xl text-gray-500 font-medium leading-relaxed mb-12">
+            <p className="text-xl sm:text-3xl md:text-4xl text-gray-500 font-medium leading-relaxed mb-8 sm:mb-12">
               全面支持导出和导入用户数据，<br/>
               <span className="text-indigo-600">不被会员所限制。</span>
             </p>
@@ -399,13 +398,13 @@ function FeatureData() {
                导出的 JSON 数据格式标准清晰，方便 AI 处理或迁移到其他平台。
                你的数据，完全属于你。
             </p>
-            <div className="flex gap-4">
+            <div className="flex flex-wrap gap-3 sm:gap-4">
                <div className="px-6 py-3 bg-indigo-50 text-indigo-700 rounded-xl font-medium">JSON 导出</div>
                <div className="px-6 py-3 bg-indigo-50 text-indigo-700 rounded-xl font-medium">数据导入</div>
                <div className="px-6 py-3 bg-indigo-50 text-indigo-700 rounded-xl font-medium">AI 友好</div>
             </div>
           </div>
-          <div className="bg-gray-900 p-12 rounded-[3rem] shadow-2xl font-mono text-base text-gray-300 relative group transform rotate-3 hover:rotate-0 transition-transform duration-500">
+          <div className="bg-gray-900 p-6 sm:p-12 rounded-[2rem] sm:rounded-[3rem] shadow-2xl font-mono text-sm sm:text-base text-gray-300 relative group transform rotate-1 sm:rotate-3 hover:rotate-0 transition-transform duration-500">
              <div className="absolute top-6 right-6 flex gap-3">
                <div className="w-4 h-4 rounded-full bg-red-500" />
                <div className="w-4 h-4 rounded-full bg-yellow-500" />
@@ -432,15 +431,15 @@ function FeatureData() {
 // 5. 存钱，想要存钱？一样满足！
 function FeatureSavings() {
   return (
-    <section className="py-32 bg-gray-50 overflow-hidden">
+    <section className="py-20 sm:py-32 bg-gray-50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-         <div className="grid md:grid-cols-2 gap-20 items-center">
+         <div className="grid md:grid-cols-2 gap-10 md:gap-20 items-center">
             <div className="order-2 md:order-1 relative">
-               <div className="absolute inset-0 bg-gradient-to-tr from-emerald-100 to-teal-50 rounded-full blur-3xl opacity-50" />
+               <div className="absolute inset-0 bg-gradient-to-tr from-emerald-100 to-teal-50 rounded-full blur-3xl opacity-50 hidden sm:block" />
                <div className="relative z-10 grid gap-6">
                   <motion.div 
                     whileHover={{ scale: 1.02 }}
-                    className="bg-white rounded-[2.5rem] p-8 shadow-xl shadow-emerald-900/5 border border-emerald-100"
+                    className="bg-white rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-8 shadow-xl shadow-emerald-900/5 border border-emerald-100"
                   >
                      <div className="flex justify-between items-center mb-6">
                         <div className="w-12 h-12 bg-emerald-100 rounded-2xl flex items-center justify-center text-2xl">🏝️</div>
@@ -463,7 +462,7 @@ function FeatureSavings() {
 
                   <motion.div 
                     whileHover={{ scale: 1.02 }}
-                    className="bg-white rounded-[2.5rem] p-8 shadow-xl shadow-blue-900/5 border border-blue-100 ml-12"
+                    className="bg-white rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-8 shadow-xl shadow-blue-900/5 border border-blue-100 sm:ml-12"
                   >
                      <div className="flex justify-between items-center mb-6">
                         <div className="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center text-2xl">💻</div>
@@ -490,10 +489,10 @@ function FeatureSavings() {
                <div className="inline-flex items-center justify-center p-4 bg-emerald-100 rounded-3xl mb-10">
                  <TrendingUp className="w-8 h-8 text-emerald-600" />
                </div>
-               <h2 className="text-5xl md:text-7xl font-bold mb-8 text-gray-900 tracking-tight">
+               <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 sm:mb-8 text-gray-900 tracking-tight">
                  存钱目标
                </h2>
-               <p className="text-3xl md:text-4xl text-gray-500 font-medium leading-relaxed mb-10">
+               <p className="text-xl sm:text-3xl md:text-4xl text-gray-500 font-medium leading-relaxed mb-8 sm:mb-10">
                  想要存钱？<br/>
                  <span className="text-emerald-600">一样满足！</span>
                </p>
@@ -512,22 +511,22 @@ function FeatureSavings() {
 // 6. 精美的动画，流畅的动效，记账不再是工作，而是一种享受
 function FeatureAnimations() {
   return (
-    <section className="py-32 bg-white overflow-hidden">
+    <section className="py-20 sm:py-32 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-         <div className="grid md:grid-cols-2 gap-20 items-center">
-            <div className="order-2 md:order-1 relative h-[600px] flex items-center justify-center">
+         <div className="grid md:grid-cols-2 gap-10 md:gap-20 items中心">
+           <div className="order-2 md:order-1 relative h-[420px] sm:h-[600px] flex items-center justify-center">
                {/* Animated Elements */}
-               <div className="absolute inset-0 bg-gradient-to-br from-violet-50 to-fuchsia-50 rounded-full blur-3xl opacity-50" />
+               <div className="absolute inset-0 bg-gradient-to-br from-violet-50 to-fuchsia-50 rounded-full blur-3xl opacity-50 hidden sm:block" />
                
                <motion.div 
                  animate={{ rotate: 360 }}
                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                 className="absolute w-[500px] h-[500px] border border-violet-100 rounded-full"
+                 className="absolute w-[320px] h-[320px] sm:w-[500px] sm:h-[500px] border border-violet-100 rounded-full hidden sm:block"
                />
                <motion.div 
                  animate={{ rotate: -360 }}
                  transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                 className="absolute w-[350px] h-[350px] border border-fuchsia-100 rounded-full"
+                 className="absolute w-[240px] h-[240px] sm:w-[350px] sm:h-[350px] border border-fuchsia-100 rounded-full hidden sm:block"
                />
 
                <motion.div 
@@ -619,11 +618,11 @@ function FeatureCrossPlatform() {
 
         <div className="relative">
            <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-violet-50 rounded-full blur-3xl opacity-50 -z-10" />
-           <div className="flex flex-col md:flex-row justify-center items-end gap-8 md:gap-4">
+           <div className="flex flex-row md:flex-row justify-start md:justify-center items-end gap-6 md:gap-4 overflow-x-auto md:overflow-visible snap-x snap-mandatory px-2 -mx-2">
               {/* Desktop */}
               <motion.div 
                 whileHover={{ y: -10 }}
-                className="bg-white p-4 rounded-3xl shadow-xl border border-gray-200 w-full md:w-auto"
+                className="bg-white p-4 rounded-3xl shadow-xl border border-gray-200 w-full md:w-auto snap-center min-w-[280px]"
               >
                  <div className="bg-gray-900 rounded-2xl aspect-[16/10] w-full md:w-[500px] flex items-center justify-center relative overflow-hidden group">
                     <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900" />
@@ -635,7 +634,7 @@ function FeatureCrossPlatform() {
               {/* Tablet */}
               <motion.div 
                 whileHover={{ y: -10 }}
-                className="bg-white p-4 rounded-3xl shadow-xl border border-gray-200 w-full md:w-auto md:-ml-12 z-10"
+                className="bg-white p-4 rounded-3xl shadow-xl border border-gray-200 w-full md:w-auto md:-ml-12 z-10 snap-center min-w-[220px]"
               >
                  <div className="bg-gray-900 rounded-2xl aspect-[3/4] w-full md:w-[240px] flex items-center justify-center relative overflow-hidden group">
                     <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900" />
@@ -647,7 +646,7 @@ function FeatureCrossPlatform() {
               {/* Mobile */}
               <motion.div 
                 whileHover={{ y: -10 }}
-                className="bg-white p-4 rounded-3xl shadow-xl border border-gray-200 w-full md:w-auto md:-ml-12 z-20"
+                className="bg-white p-4 rounded-3xl shadow-xl border border-gray-200 w-full md:w-auto md:-ml-12 z-20 snap-center min-w-[160px]"
               >
                  <div className="bg-gray-900 rounded-2xl aspect-[9/19.5] w-full md:w-[140px] flex items-center justify-center relative overflow-hidden group">
                     <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900" />
@@ -671,18 +670,18 @@ function FeatureInterface() {
           简洁的界面，<br/>
           <span className="text-gray-400">更少的选择，但是更好用。</span>
         </h2>
-        <div className="grid md:grid-cols-3 gap-8">
-           <div className="bg-white p-10 rounded-[2.5rem] shadow-sm">
+        <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+           <div className="bg-white p-6 sm:p-10 rounded-[2rem] sm:rounded-[2.5rem] shadow-sm">
               <div className="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-6 text-3xl">✨</div>
               <h3 className="text-2xl font-bold mb-3">极简主义</h3>
               <p className="text-gray-500">摒弃一切干扰，只保留最核心的功能。</p>
            </div>
-           <div className="bg-white p-10 rounded-[2.5rem] shadow-sm">
+           <div className="bg-white p-6 sm:p-10 rounded-[2rem] sm:rounded-[2.5rem] shadow-sm">
               <div className="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-6 text-3xl">⚡</div>
               <h3 className="text-2xl font-bold mb-3">高效操作</h3>
               <p className="text-gray-500">减少点击次数，提升记账效率。</p>
            </div>
-           <div className="bg-white p-10 rounded-[2.5rem] shadow-sm">
+           <div className="bg-white p-6 sm:p-10 rounded-[2rem] sm:rounded-[2.5rem] shadow-sm">
               <div className="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-6 text-3xl">🎯</div>
               <h3 className="text-2xl font-bold mb-3">专注核心</h3>
               <p className="text-gray-500">专注于记账本身，不被繁杂功能打扰。</p>
@@ -698,18 +697,95 @@ function Footer() {
     <footer className="bg-white border-t border-gray-100 py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-8">
         <div className="flex items-center space-x-3">
-           <img src="/logo.svg" alt="Logo" className="h-10 w-10 opacity-80" />
+           <img src="logo.svg" alt="Logo" className="h-10 w-10 opacity-80" />
            <span className="font-bold text-xl text-gray-900">青荷记账</span>
         </div>
         <div className="flex gap-8 text-gray-500 font-medium">
-           <a href="#" className="hover:text-gray-900">关于我们</a>
-           <a href="#" className="hover:text-gray-900">隐私政策</a>
-           <a href="#" className="hover:text-gray-900">联系方式</a>
+           <a href="#about" className="hover:text-gray-900">关于我们</a>
+           <a href="#privacy" className="hover:text-gray-900">隐私政策</a>
+           <a href="#contact" className="hover:text-gray-900">联系方式</a>
         </div>
         <div className="text-gray-400 text-sm">
-          © 2024 Budget App. All rights reserved.
+          © 2025 青荷记账. 保留所有权利。
         </div>
       </div>
     </footer>
+  );
+}
+
+function About() {
+  return (
+    <section id="about" className="py-24 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-16 items-center">
+        <div>
+          <div className="inline-flex items-center justify-center p-4 bg-blue-100 rounded-3xl mb-8">
+            <Smartphone className="w-8 h-8 text-blue-600" />
+          </div>
+          <h2 className="text-5xl font-bold mb-6 text-gray-900">关于我们</h2>
+          <p className="text-xl text-gray-600 leading-relaxed">
+            青荷记账是一款专注于个人财务管理的轻量应用。我们追求简洁优雅的体验，帮助你轻松记录每一笔收支，掌控每月预算。
+          </p>
+          <ul className="mt-8 space-y-4 text-gray-700 text-lg">
+            <li>离线本地存储，无需登录</li>
+            <li>导入/导出数据，备份自由</li>
+            <li>细致的动效与贴心交互</li>
+          </ul>
+        </div>
+        <div className="bg-white rounded-[2rem] shadow-2xl p-10 border border-gray-100">
+          <div className="text-gray-500 text-lg leading-relaxed">
+            我们相信，记账应该是轻松而愉悦的事情。青荷记账不做复杂的社交与冗余功能，只把你最在意的预算、支出和分析做到极致。
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Privacy() {
+  return (
+    <section id="privacy" className="py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="inline-flex items-center justify-center p-4 bg-indigo-100 rounded-3xl mb-8">
+          <ShieldCheck className="w-8 h-8 text-indigo-600" />
+        </div>
+        <h2 className="text-5xl font-bold mb-6 text-gray-900">隐私政策</h2>
+        <div className="text-xl text-gray-600 leading-relaxed space-y-6">
+          <p>青荷记账是本地应用，数据仅保存在你的设备中，我们不会收集、上传或分析你的任何个人信息。</p>
+          <ul className="space-y-3">
+            <li>清除浏览器缓存或卸载应用可能导致数据丢失，请自行备份。</li>
+            <li>导入/导出功能由你自主触发，我们不做远程同步。</li>
+            <li>如果你通过邮件反馈问题，我们仅用于沟通，不做其他用途。</li>
+          </ul>
+          <p>这是一份轻松版本的隐私说明，核心就是：你的数据只属于你。</p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Contact() {
+  return (
+    <section id="contact" className="py-24 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-16 items-center">
+        <div>
+          <div className="inline-flex items-center justify-center p-4 bg-emerald-100 rounded-3xl mb-8">
+            <Mail className="w-8 h-8 text-emerald-600" />
+          </div>
+          <h2 className="text-5xl font-bold mb-6 text-gray-900">联系方式</h2>
+          <p className="text-xl text-gray-600 leading-relaxed">
+            有任何问题或建议，欢迎联系我：
+          </p>
+          <a href="mailto:quentincrane@163.com" className="inline-flex items-center mt-6 px-6 py-3 rounded-full bg-emerald-600 text-white text-lg font-semibold hover:bg-emerald-700 transition-all">
+            <Mail className="w-5 h-5 mr-2" /> quentincrane@163.com
+          </a>
+          <p className="text-sm text-gray-500 mt-4">点击按钮将打开你的邮件客户端。</p>
+        </div>
+        <div className="bg-white rounded-[2rem] shadow-2xl p-10 border border-gray-100">
+          <div className="text-gray-500 text-lg leading-relaxed">
+            如果你在应用设置页发现“反馈与建议”入口，也可以直接通过该入口进行反馈。
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
